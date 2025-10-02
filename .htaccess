@@ -1,0 +1,56 @@
+﻿# SeguranÃ§a: bloquear acesso a arquivos sensÃ­veis e diretÃ³rios internos
+
+# Evita listagem de diretÃ³rios; se alguÃ©m acessar uma pasta diretamente, redireciona para o index pÃºblico
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<IfModule mod_authz_core.c>
+  # Bloqueia todos os arquivos iniciados com ponto (ex.: .env, .git, .ht*)
+  <FilesMatch "^\.">
+    Require all denied
+  </FilesMatch>
+
+  # Bloqueia arquivos especÃ­ficos sensÃ­veis
+  <FilesMatch "^(\.env(\..*)?|composer\.(json|lock)|\.gitignore|\.gitattributes|\.editorconfig)$">
+    Require all denied
+  </FilesMatch>
+
+  # Bloqueia acesso direto a diretÃ³rios internos do app
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|db|scripts)/ - [F,L]
+
+    # ExceÃ§Ã£o: permitir /publico/ servir seu prÃ³prio index
+    RewriteRule ^publico/?$ publico/index.php [L]
+
+    # URLs amigÃ¡veis: /acao/<rota> -> publico/index.php?acao=<rota>
+    RewriteRule ^acao/(.+)$ publico/index.php?acao=$1 [QSA,L]
+
+    # Se a URL apontar para um diretÃ³rio (qualquer outro), redireciona para o index da raiz
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_URI} !publico/?$ [NC]
+    RewriteRule ^ index.php [R=302,L]
+  </IfModule>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+  # Compatibilidade com Apache 2.2
+  <FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+  <FilesMatch "^(\.env(\..*)?|composer\.(json|lock)|\.gitignore|\.gitattributes|\.editorconfig)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|db|scripts)/ - [F,L]
+    RewriteRule ^publico/?$ publico/index.php [L]
+    RewriteRule ^acao/(.+)$ publico/index.php?acao=$1 [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_URI} !publico/?$ [NC]
+    RewriteRule ^ index.php [R=302,L]
+  </IfModule>
+</IfModule>
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Prevent UTF-8 BOM in PHP files
+php scripts/check_bom_whitespace.php
+status=$?
+if [ $status -ne 0 ]; then
+  echo "\nPre-commit: falha na verificação de BOM. Corrija antes de commitar." 1>&2
+  exit $status
+fi
+
+exit 0
+

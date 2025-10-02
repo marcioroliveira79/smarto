@@ -1,0 +1,1 @@
+csrf_token|s:64:"1dfe968067e890d360061cf010a3a6fbc4add6a4034aa15ea2a1d1f542e63f20";login_email|s:15:"teste@gmail.com";login_falhas|a:0:{}usuario|a:6:{s:2:"id";i:2;s:4:"nome";s:5:"Teste";s:5:"email";s:15:"teste@gmail.com";s:9:"perfil_id";i:2;s:11:"perfil_nome";s:0:"";s:8:"login_ts";i:1759424909;}
