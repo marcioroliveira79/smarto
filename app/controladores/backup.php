@@ -23,7 +23,7 @@ function baixar(): void {
     $nome = basename((string)($_GET['arquivo'] ?? ''));
     $dir = realpath(__DIR__ . '/..' . '/..') . DIRECTORY_SEPARATOR . 'backups';
     $caminho = $dir . DIRECTORY_SEPARATOR . $nome;
-    if (!$nome || !is_file($caminho)) { http_response_code(404); echo 'Arquivo nÃ£o encontrado'; return; }
+    if (!$nome || !is_file($caminho)) { http_response_code(404); echo 'Arquivo Não encontrado'; return; }
     header('Content-Type: application/sql');
     header('Content-Disposition: attachment; filename="' . $nome . '"');
     header('Content-Length: ' . filesize($caminho));
@@ -80,7 +80,7 @@ function gerar(): void {
     $arquivo = $dir . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd_His') . ($incluirDados ? '_full' : '_ddl') . '.sql';
 
     $fh = fopen($arquivo, 'w');
-    if (!$fh) { set_flash('danger', 'NÃ£o foi possÃ­vel criar arquivo.'); redirecionar('backup.painel'); }
+    if (!$fh) { set_flash('danger', 'Não foi possível criar arquivo.'); redirecionar('backup.painel'); }
 
     $w = function(string $s) use ($fh){ fwrite($fh, $s); };
 
@@ -178,7 +178,7 @@ function gerar(): void {
         }
         $w("\n");
 
-        // Indexes nÃ£o PK/UK
+        // Indexes Não PK/UK
         $idx = $pdo->prepare("SELECT indexname, indexdef FROM pg_indexes WHERE schemaname=:s AND tablename=:t ORDER BY indexname");
         $idx->execute([':s'=>$schema, ':t'=>$t]);
         foreach ($idx->fetchAll(PDO::FETCH_ASSOC) as $ir) {

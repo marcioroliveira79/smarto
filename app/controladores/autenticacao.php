@@ -350,14 +350,14 @@ function enviar_reset(): void {
         if ($base === '') { $base = (App\Config\base_path() ?: '') . '/publico'; }
         $link = $base . '/index.php?acao=autenticacao.redefinir&token=' . urlencode($token);
         $nomeEmpresa = App\Modelos\Config\obter('Variavel de Ambiente','NomeEmpresa') ?? 'Smarto';
-        $assunto = 'Recuperaçãoo de acesso - ' . $nomeEmpresa;
-        $corpo = "Ola,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe vocÃª não solicitou, ignore este e-mail.";
+        $assunto = 'Recuperação de acesso - ' . $nomeEmpresa;
+        $corpo = "Olá,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe você não solicitou, ignore este e-mail.";
         // Corrige assunto e corpo com acentuaçãoo correta (UTF-8)
-        $assunto = 'Recuperaçãoo de acesso - ' . $nomeEmpresa;
-        $corpo = "OlÃ¡,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe vocÃª não solicitou, ignore este e-mail.";
+        $assunto = 'Recuperação de acesso - ' . $nomeEmpresa;
+        $corpo = "Olá,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe você não solicitou, ignore este e-mail.";
         // Ajuste de assunto e corpo com acentuaçãoo correta (UTF-8)
-        $assunto = 'Recuperaçãoo de acesso - ' . $nomeEmpresa;
-        $corpo = "OlÃ¡,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe vocÃª não solicitou, ignore este e-mail.";
+        $assunto = 'Recuperação de acesso - ' . $nomeEmpresa;
+        $corpo = "Olá,\n\nRecebemos um pedido para redefinir sua senha.\n\nUse o link abaixo dentro de 1 hora:\n" . $link . "\n\nSe você não solicitou, ignore este e-mail.";
         $cfgEmail = [
             'from_email'  => (string)(App\Modelos\Config\obter('email','from_email') ?? ''),
             'from_name'   => (string)(App\Modelos\Config\obter('email','from_name') ?? ''),
@@ -374,8 +374,8 @@ function enviar_reset(): void {
     } else {
         App\Lib\auditar_acao('senha.reset.enviar', ['email'=>$email, 'ok'=> false, 'motivo'=>'usuario_nao_encontrado']);
     }
-    App\Lib\set_flash('success', 'Se o e-mail existir e estiver ativo, enviaremos um link de recuperaçãoo.');
-    App\Lib\set_flash('success', 'Se o e-mail existir e estiver ativo, enviaremos um link de recuperaçãoo.');
+    App\Lib\set_flash('success', 'Se o e-mail existir e estiver ativo, enviaremos um link de recuperação.');
+    App\Lib\set_flash('success', 'Se o e-mail existir e estiver ativo, enviaremos um link de recuperação.');
     
     App\Lib\redirecionar('autenticacao.login');
 }
@@ -385,7 +385,7 @@ function redefinir(): void {
     $r = $token ? ResetModel\buscar_por_token($token) : null;
     $valido = $r && empty($r['usado_em']) && (strtotime((string)$r['expira_em']) > time());
     if (!$valido) {
-        App\Lib\set_flash('danger', 'Link invÃ¡lido ou expirado.');
+        App\Lib\set_flash('danger', 'Link inválido ou expirado.');
         App\Lib\redirecionar('autenticacao.login');
     }
     $flash = App\Lib\get_flash();
@@ -407,7 +407,7 @@ function redefinir_salvar(): void {
         App\Lib\redirecionar('autenticacao.redefinir', ['token'=>$token]);
     }
     if (mb_strlen($senha) > 14) {
-        App\Lib\set_flash('danger','Senha deve ter no mÃ¡ximo 14 caracteres.');
+        App\Lib\set_flash('danger','Senha deve ter no máximo 14 caracteres.');
         App\Lib\redirecionar('autenticacao.redefinir', ['token'=>$token]);
     }
     // Polí­tica de senha forte (Variavel de Ambiente: senhaForte)
@@ -420,13 +420,13 @@ function redefinir_salvar(): void {
             $len = mb_strlen($senha);
             $ok = ($len >= 8 && $len <= 14) && preg_match('/[A-Z]/', $senha) && preg_match('/[a-z]/', $senha) && preg_match('/[^A-Za-z0-9]/', $senha);
             if (!$ok) {
-                App\Lib\set_flash('danger','Senha forte obrigatÃ³ria: 8-14, com maiÃºscula, minÃºscula e caractere especial.');
+                App\Lib\set_flash('danger','Senha forte obrigatória: 8-14, com maiúscula, minúscula e caractere especial.');
                 App\Lib\redirecionar('autenticacao.redefinir', ['token'=>$token]);
             }
             // Não pode ser igual Ã  anterior
             $old = (string)((UsuarioModel\buscar((int)$r['usuario_id'])['senha_hash'] ?? ''));
             if ($old !== '' && password_verify($senha, $old)) {
-                App\Lib\set_flash('danger','A nova senha não pode ser igual Ã  anterior.');
+                App\Lib\set_flash('danger','A nova senha não pode ser igual à anterior.');
                 App\Lib\redirecionar('autenticacao.redefinir', ['token'=>$token]);
             }
         }

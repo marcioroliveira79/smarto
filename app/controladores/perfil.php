@@ -64,9 +64,9 @@ function excluir(): void {
         redirecionar('perfil.listar');
     }
     if (PerfilModel\excluir($id)) {
-        set_flash('success', 'Perfil excluÃ­do.');
+        set_flash('success', 'Perfil excluído.');
     } else {
-        set_flash('danger', 'NÃ£o foi possÃ­vel excluir.');
+        set_flash('danger', 'Não foi possível excluir.');
     }
     redirecionar('perfil.listar');
 }
