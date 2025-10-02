@@ -1,4 +1,4 @@
-﻿# Smarto System – Clínica (MVP)
+﻿# Smarto System – (MVP)
 
 Projeto minimalista em **PHP puro** com **PostgreSQL**, sem frameworks, focado em gestão clínica, RBAC por perfis, seleção de clínica no login e menus dinâmicos carregados do banco. Front-end via CDN: Bootstrap 5, Font Awesome 6, jQuery e DataTables.
 
