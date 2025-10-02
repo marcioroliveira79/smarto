@@ -6,7 +6,6 @@ Projeto minimalista em **PHP puro** com **PostgreSQL**, sem frameworks, focado e
 
 ## 🚀 Principais Recursos
 - Autenticação segura e controle de acesso por perfis (RBAC)
-- Seleção de clínica no login
 - Menus dinâmicos vinculados ao perfil
 - Auditoria de logins e acessos (IP, user-agent)
 - Rate-limit de login (5 tentativas/IP+email/15min)
