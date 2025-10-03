@@ -14,8 +14,8 @@ include __DIR__ . '/../partials/cabecalho.php';
   </div>
   <div class="card-body">
     <div class="d-flex justify-content-end mb-2 gap-2">
-      <a class="btn btn-sm btn-outline-primary app-link" href="<?= url('config.interface') ?>"><i class="fa fa-sliders me-1"></i>Configurar interface</a>
-      <a class="btn btn-sm btn-outline-primary app-link" href="<?= url('config.email') ?>"><i class="fa fa-envelope me-1"></i>Configurar e-mail</a>
+      <a class="btn btn-sm btn-primary app-link app-action" href="<?= url('config.interface') ?>"><i class="fa fa-sliders me-1"></i>Configurar interface</a>
+      <a class="btn btn-sm btn-primary app-link app-action" href="<?= url('config.email') ?>"><i class="fa fa-envelope me-1"></i>Configurar e-mail</a>
     </div>
     <div class="table-responsive">
       <table class="table table-striped datatable">

@@ -1,1 +1,1 @@
-csrf_token|s:64:"8a84dd71c5adc318f25727a0282e713a5a680c47a2dc5d20a9c72f0ac9a6e24b";usuario|a:6:{s:2:"id";i:1;s:4:"nome";s:13:"Administrador";s:5:"email";s:29:"marcio.r.oliveira79@gmail.com";s:9:"perfil_id";i:1;s:11:"perfil_nome";s:0:"";s:8:"login_ts";i:1759448414;}
+csrf_token|s:64:"03f64c753376d9cb4b77d5a549742a2022a095379de120337e81a9892f60193c";usuario|a:6:{s:2:"id";i:1;s:4:"nome";s:13:"Administrador";s:5:"email";s:29:"marcio.r.oliveira79@gmail.com";s:9:"perfil_id";i:1;s:11:"perfil_nome";s:0:"";s:8:"login_ts";i:1759494964;}

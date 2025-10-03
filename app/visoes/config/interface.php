@@ -11,7 +11,7 @@ $ui = $ui ?? [];
 <div class="card shadow-sm">
   <div class="card-header d-flex justify-content-between align-items-center">
     <div><i class="fa fa-sliders me-1"></i>Configurar interface</div>
-    <a href="<?= url('config.listar') ?>" class="btn btn-sm btn-outline-secondary app-link"><i class="fa fa-arrow-left me-1"></i>Voltar</a>
+    <a href="<?= url('config.listar') ?>" class="btn btn-sm btn-outline-secondary app-link app-action"><i class="fa fa-arrow-left me-1"></i>Voltar</a>
   </div>
   <div class="card-body">
     <form method="post" action="<?= url('config.interface_salvar') ?>">
@@ -84,7 +84,7 @@ $ui = $ui ?? [];
       </div>
 
       <div class="mt-4 text-end">
-        <button class="btn btn-primary"><i class="fa fa-floppy-disk me-1"></i>Salvar</button>
+        <button class="btn btn-primary app-action"><i class="fa fa-floppy-disk me-1"></i>Salvar</button>
       </div>
     </form>
   </div>

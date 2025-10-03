@@ -79,7 +79,7 @@ $cfg = $cfg ?? [];
     </form>
   </div>
   <div class="card-footer">
-    <a href="<?= url('config.listar') ?>" class="btn btn-outline-secondary app-link"><i class="fa fa-arrow-left me-1"></i>Voltar</a>
+    <a href="<?= url('config.listar') ?>" class="btn btn-outline-secondary app-link app-action"><i class="fa fa-arrow-left me-1"></i>Voltar</a>
   </div>
 </div>
 

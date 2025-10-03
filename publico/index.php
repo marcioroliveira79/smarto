@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL & ~E_WARNING);
+ini_set('display_errors', '0');
 // Roteador simples baseado no parametro GET "acao"
 
 // Define diretório dedicado para arquivos de sessão antes de iniciar a sessão
@@ -9,7 +11,7 @@ try {
     if (is_dir($sessDir) && @is_writable($sessDir)) { session_save_path($sessDir); }
 } catch (\Throwable $e) { /* segue com padrão do PHP */ }
 
-session_start();
+@session_start();
 
 require_once __DIR__ . '/../app/config/env.php';
 require_once __DIR__ . '/../app/config/config.php';
