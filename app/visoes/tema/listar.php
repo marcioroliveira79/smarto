@@ -7,8 +7,8 @@ use function App\Lib\url;
 include __DIR__ . '/../partials/cabecalho.php';
 ?>
 <div class="container py-4">
-  <h1 class="h4 mb-3" style="color: var(--app-text-accent, #0d6efd);">
-    <i class="fa fa-palette me-2" style="color: var(--app-text-accent, #0d6efd);"></i>Tema do Sistema
+  <h1 class="h4 mb-3 text-accent">
+    <i class="fa fa-palette me-2 text-accent"></i>Tema do Sistema
   </h1>
 
   <div class="row g-3">

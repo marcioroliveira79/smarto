@@ -7,8 +7,8 @@ use function App\Lib\Tema\icone;
 include __DIR__ . '/../partials/cabecalho.php';
 ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
-  <h5 class="m-0" style="color: var(--app-text-accent, #0d6efd);">
-    <i class="fa <?= icone('perfil') ?> me-2" style="color: var(--app-text-accent, #0d6efd);"></i>Perfis
+  <h5 class="m-0 text-accent">
+    <i class="fa <?= icone('perfil') ?> me-2 text-accent"></i>Perfis
   </h5>
   <a href="<?= url('perfil.novo') ?>" class="btn btn-primary app-link"><i class="fa fa-plus me-1"></i>Novo</a>
   </div>

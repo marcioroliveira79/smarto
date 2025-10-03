@@ -90,7 +90,7 @@ function obter_ip(): string {
 function confirmar_post(): void {
     if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
         http_response_code(405);
-        echo 'Método não permitido';
+        include __DIR__ . '/../visoes/erros/metodo_nao_permitido.php';
         exit;
     }
 }

@@ -15,6 +15,11 @@ DirectoryIndex index.php index.html
     Require all denied
   </FilesMatch>
 
+  # Permite acesso ao index.php da raiz
+  <Files "index.php">
+    Require all granted
+  </Files>
+
   # Bloqueia acesso direto a diretÃ³rios internos do app
   <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -30,6 +35,10 @@ DirectoryIndex index.php index.html
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} !publico/?$ [NC]
     RewriteRule ^ index.php [R=302,L]
+
+    # Redireciona acesso à raiz para /publico
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ /publico/ [R=302,L]
   </IfModule>
 </IfModule>
 
@@ -51,6 +60,10 @@ DirectoryIndex index.php index.html
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} !publico/?$ [NC]
     RewriteRule ^ index.php [R=302,L]
+
+    # Redireciona acesso à raiz para /publico
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ /publico/ [R=302,L]
   </IfModule>
 </IfModule>
 

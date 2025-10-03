@@ -43,7 +43,7 @@ include __DIR__ . '/forca_troca.php';
     .btn { transition: filter .15s ease-in-out, transform .02s ease-in-out; }
     .btn:hover { filter: brightness(1.05); }
     .btn:active { transform: scale(0.98); }
-    /* Dropdown + submenu styling/positioning (Bootstrap 5 nÃƒÂ£o dÃƒÂ¡ suporte nativo) */
+    /* Dropdown + submenu styling/positioning (Bootstrap 5 não dá suporte nativo) */
     .navbar .dropdown-menu { border-radius: .6rem; padding: .25rem; box-shadow: 0 10px 25px rgba(0,0,0,.15); border-color: #e9ecef; }
     .navbar .dropdown-menu .dropdown-item { border-radius: .4rem; padding: .5rem .75rem; display: flex; align-items: center; gap: .5rem; }
     .navbar .dropdown-menu .dropdown-item i.fa { width: 1.1rem; text-align: center; opacity: .9; }
@@ -53,6 +53,8 @@ include __DIR__ . '/forca_troca.php';
     .dropdown-submenu > .dropdown-menu { position: absolute; top: 0; left: 100%; margin-top: -0.25rem; margin-left: .15rem; }
     .dropdown-submenu > .dropdown-item::after { content: none; }
     @media (hover: hover) { .dropdown-submenu:hover > .dropdown-menu { display: block; } }
+    /* Classe para textos e ícones destacados */
+    .text-accent { color: var(--color-text-accent, #0d6efd) !important; }
   </style>
 </head>
 <body style="margin:0!important;padding:0;">

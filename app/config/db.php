@@ -28,7 +28,7 @@ function pdo(): PDO {
         $pdo->exec("SET search_path TO \"{$schema}\", public");
     } catch (PDOException $e) {
         http_response_code(500);
-        echo 'Falha na conexão ao banco de dados: ' . htmlspecialchars($e->getMessage());
+        include __DIR__ . '/../visoes/erros/db_conexao.php';
         exit;
     }
     return $pdo;

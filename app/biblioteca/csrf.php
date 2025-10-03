@@ -19,7 +19,7 @@ function validar(): void {
     $post = $_POST['csrf_token'] ?? '';
     if (!hash_equals($_SESSION['csrf_token'] ?? '', $post)) {
         http_response_code(400);
-        echo 'CSRF inválido';
+        include __DIR__ . '/../visoes/erros/csrf_invalido.php';
         exit;
     }
 }
